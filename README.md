@@ -11,13 +11,7 @@ This repo is a simple bit of pre-canned config and extension of the official Log
 There are a two primary usage options for this repo:
 
 1. Logstash client deployment via Docker Hub-hosted image
-2. Logstash client deployment, with baked-in configuration, using the provided Dockerfile to buil a custom image
-
-In both of the options, we launch Logstash with the following config, unless you change what is in the ./config/logstash/conf.d directory:
-
-1. Listens on UDP 5514 for syslog messages (pro-tip: you can test via netcat (`nc`) like so: `nc -w0 -u 127.0.0.1 5514 <<< "pickles"`)
-2. Looks for updates to `/private/log/system.log` (relevant only for Mac users, so comment out/remove/modify this if you are on any other platform)
-3. Ships any logging to the ElasticSearch instance
+2. Logstash client deployment via custom Docker image,  with your baked-in configuration
 
 # Option 1: Logstash client deployment via Docker Hub-hosted image
 
@@ -28,8 +22,7 @@ For example, if your Elasticsearch endpoint's IP address was 10.2.3.4, you would
 Logstash will run with the following config:
 
 1. Listens on UDP 5514 for syslog messages (pro-tip: you can test via netcat (`nc`) like so: `nc -w0 -u 127.0.0.1 5514 <<< "pickles"`)
-2. Looks for updates to `/private/log/system.log` (relevant only for Mac users, so comment out/remove/modify this if you are on any other platform)
-3. Ships any logging to the ElasticSearch instance
+2. Ships any logging to the ElasticSearch instance
 
 # Option 2: Use Dockerfile to build a new Docker image
 
