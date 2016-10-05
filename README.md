@@ -1,3 +1,4 @@
+
 # Overview
 
 This repo is a simple bit of pre-canned config and extension of the official Logstash container. The intent is to use Logstash in a container as a client deployment option (vs installing it natively), with the following focuses:
