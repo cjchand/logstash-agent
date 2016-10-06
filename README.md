@@ -16,7 +16,7 @@ There are a two primary usage options for this repo:
 
 There is a pre-built Docker image - based on the Dockerfile in this repo - hosted as [ccfoss/logstash-syslog-proxy](https://hub.docker.com/r/ccfoss/logstash-syslog-proxy/). The container needs to be able to resolve the host "elasticsearch," which you can do by using the `add-host` option in your `docker run` command. 
 
-For example, if your Elasticsearch endpoint's IP address was 10.2.3.4, you would run the container like so: `docker run --name logstash_agent --add-host=elasticsearch:10.2.3.4 ccfoss/logstash-syslog-proxy`.
+For example, if your Elasticsearch endpoint's IP address was 10.2.3.4, you would run the container like so: `docker run --name logstash_agent --add-host=elasticsearch:10.2.3.4 -p 5514:5514/udp ccfoss/logstash-syslog-proxy`.
 
 Logstash will run with the following config:
 
