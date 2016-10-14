@@ -1,5 +1,5 @@
 FROM logstash
 
-COPY ./config/logstash/conf.d /etc/logstash/conf.d
+COPY ./config/logstash /etc/logstash
 
 CMD ["-f", "/etc/logstash/conf.d"]
