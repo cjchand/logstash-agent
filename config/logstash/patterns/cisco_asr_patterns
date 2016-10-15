@@ -1,0 +1,16 @@
+#== Cisco ASR ==
+#== Common log strings ==
+CISCO_TAGGED_SYSLOG ^<%{POSINT:syslog_pri}>%{CISCOTIMESTAMP:timestamp}( %{SYSLOGHOST:sysloghost})?: %%{CISCOTAG:ciscotag}:
+CISCOTIMESTAMP %{MONTH} +%{MONTHDAY}(?: %{YEAR})? %{TIME}
+CISCOTAG [A-Z0-9]+-%{INT}-(?:[A-Z0-9_]+)
+CISCO_ASA_HEADER %{DATA:asr_node_id}:%{MONTH} (?: |)%{MONTHDAY} %{TIME} : %{WORD:process}(?:|_)\[%{NUMBER:pid:int}\]: \%%{DATA:syslog_tag} :
+#== ASA Log Parsers ==
+SECURITY_SSHD_4_INFO_FAILURE %{CISCO_ASA_HEADER} Failed authentication attempt by user '%{WORD:asr_user_id}' from '%{IP:asr_login_source_ip}' on '%{WORD:asr_login_tty}'
+MGBL_CONFIG_6_DB_COMMIT %{CISCO_ASA_HEADER} Configuration committed by user '%{WORD:asr_user_id}'. Use 'show configuration commit changes %{NUMBER:asr_commit_id:int}' to view the changes.
+PKT_INFRA_LINEPROTO_5_UPDOWN %{CISCO_ASA_HEADER} Line protocol on Interface %{NOTSPACE:asr_interface}, changed state to %{NOTSPACE:asr_interface_state}
+PLATFORM_VIC_4_RX_LOS %{CISCO_ASA_HEADER} Interface %{NOTSPACE:asr_interface}, Detected %{GREEDYDATA:asr_los_message}
+PKT_INFRA_LINK_3_UPDOWN %{CISCO_ASA_HEADER} Interface %{NOTSPACE:asr_interface}, changed state to %{WORD:asr_interface_state}
+MGBL_SYS_5_CONFIG_I %{CISCO_ASA_HEADER} Configured from console by %{WORD:asr_user_id} on %{WORD:asr_tty} \(%{IP:asr_login_source_ip}\)
+SECURITY_SSHD_GENERIC %{CISCO_ASA_HEADER} %{GREEDYDATA:sshd_message}
+PLATFORM_XFP_2_LOW_RX_POWER_ALARM %{CISCO_ASA_HEADER} %{WORD:xfp_alarm_state}\|%{WORD:xfp_process}\[%{NUMBER:xfp_processs_pid:int}\]\|%{WORD:xfp_unknown}\|%{NOTSPACE:xfp_port}
+ROUTING_BGP_5_ADJCHANGE %{CISCO_ASA_HEADER} neighbor %{IP:asr_bgp_neighbor} %{WORD:asr_bgp_adjacency_state} \(VRF\: %{WORD:asr_vrf}\) \(AS: %{NUMBER:asr_neighbor_as:int}\)
