@@ -1,3 +1,13 @@
+# Side Note
+
+Check out the different branches for pre-built parsers for common log types, such as:
+
+* feature/nginx-parser: "Does what it says on the tin" :)
+* feature/apache-parser: Ditto
+* feature/rmq-metrics-ingest: If RMQ Management Plugin is installed, various queue, vhost, server, etc metrics are ingested and put into ES.
+
+I have accompanying dashboards that take advantage of these parsers, which I will add to the respective branches. Stay tuned!
+
 # Overview
 
 This repo is a simple bit of pre-canned config and extension of the official Logstash container. The intent is to use Logstash in a container as a client deployment option (vs installing it natively), with the following focuses:
