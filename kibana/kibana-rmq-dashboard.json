@@ -1,0 +1,159 @@
+[
+  {
+    "_id": "RMQ-Overview",
+    "_type": "dashboard",
+    "_source": {
+      "title": "RMQ Overview",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"id\":\"RMQ-Total-Disk-Reads-slash-Writes\",\"panelIndex\":1,\"row\":5,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":7,\"id\":\"RMQ-Network-Traffic\",\"panelIndex\":2,\"row\":5,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"RMQ-Message-Totals\",\"panelIndex\":3,\"row\":1,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"RMQ-Message-RAM-Consumption\",\"panelIndex\":4,\"row\":3,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":7,\"id\":\"RMQ-Message-Ingest-and-Deliver-Rates\",\"panelIndex\":5,\"row\":1,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":7,\"id\":\"RMQ-Connections-and-Consumers\",\"panelIndex\":6,\"row\":3,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"}]",
+      "optionsJSON": "{\"darkTheme\":false}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "RMQ-Management-Metrics",
+    "_type": "search",
+    "_source": {
+      "title": "RMQ Management Metrics",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-*\",\"query\":{\"query_string\":{\"query\":\"_exists_:rabbitmq_mgmt_metadata.name\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "RMQ-Connections-and-Consumers",
+    "_type": "visualization",
+    "_source": {
+      "title": "RMQ Connections and Consumers",
+      "visState": "{\"title\":\"RMQ Connections and Consumers\",\"type\":\"line\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"drawLinesBetweenPoints\":true,\"interpolate\":\"linear\",\"legendPosition\":\"right\",\"radiusRatio\":9,\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"showCircles\":true,\"smoothLines\":false,\"times\":[],\"yAxis\":{}},\"aggs\":[{\"id\":\"6\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"8\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"object_totals.consumers\",\"customLabel\":\"Consumers\"}},{\"id\":\"9\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"object_totals.connections\",\"customLabel\":\"Connections\"}},{\"id\":\"10\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"radius\",\"params\":{\"field\":\"queue_totals.messages\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "RMQ-Management-Metrics",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "RMQ-Message-Ingest-and-Deliver-Rates",
+    "_type": "visualization",
+    "_source": {
+      "title": "RMQ Message Ingest and Deliver Rates",
+      "visState": "{\"title\":\"RMQ Message Ingest and Deliver Rates\",\"type\":\"line\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"drawLinesBetweenPoints\":true,\"interpolate\":\"linear\",\"legendPosition\":\"right\",\"radiusRatio\":9,\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"showCircles\":true,\"smoothLines\":false,\"times\":[],\"yAxis\":{}},\"aggs\":[{\"id\":\"6\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"8\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"message_stats.publish_details.rate\",\"customLabel\":\"Ingest\"}},{\"id\":\"7\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"message_stats.deliver_details.rate\",\"customLabel\":\"Deliver\"}},{\"id\":\"9\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"radius\",\"params\":{\"field\":\"queue_totals.messages\",\"customLabel\":\"Total Messages in Queue\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "RMQ-Management-Metrics",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "RMQ-Message-Totals",
+    "_type": "visualization",
+    "_source": {
+      "title": "RMQ Message Totals",
+      "visState": "{\"title\":\"RMQ Message Totals\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"2\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"queue_totals.messages_ready\",\"customLabel\":\"Ready\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"queue_totals.messages_unacknowledged\",\"customLabel\":\"UnACK\"}},{\"id\":\"5\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"radius\",\"params\":{\"field\":\"queue_totals.messages\",\"customLabel\":\"Total Messages in Queue\"}},{\"id\":\"6\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "RMQ-Management-Metrics",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "RMQ-Message-RAM-Consumption",
+    "_type": "visualization",
+    "_source": {
+      "title": "RMQ Message RAM Consumption",
+      "visState": "{\"title\":\"RMQ Message RAM Consumption\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"showCircles\":false,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"2\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"message_bytes_ram\",\"customLabel\":\"Total\"}},{\"id\":\"6\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"7\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"message_bytes_ready\",\"customLabel\":\"Ready\"}},{\"id\":\"8\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"message_bytes_unacknowledged\",\"customLabel\":\"Unacknowledged\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "RMQ-Management-Metrics",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "RMQ-Consumer-Utilization",
+    "_type": "visualization",
+    "_source": {
+      "title": "RMQ Consumer Utilization",
+      "visState": "{\"title\":\"RMQ Consumer Utilization\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"2\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"consumer_utilisation\",\"customLabel\":\"Consumer Utilization % (1.0 = 100%)\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"4\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"radius\",\"params\":{\"field\":\"queue_totals.messages\",\"customLabel\":\"Total Messages in Queue\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "RMQ-Management-Metrics",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "RMQ-Total-Disk-Reads-slash-Writes",
+    "_type": "visualization",
+    "_source": {
+      "title": "RMQ Total Disk Reads/Writes",
+      "visState": "{\"title\":\"RMQ Total Disk Reads/Writes\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"showCircles\":false,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"2\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"message_stats.disk_reads_details.rate\",\"customLabel\":\"Reads\"}},{\"id\":\"6\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"7\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"message_stats.disk_writes_details.rate\",\"customLabel\":\"Writes\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "RMQ-Management-Metrics",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "RMQ-Network-Traffic",
+    "_type": "visualization",
+    "_source": {
+      "title": "RMQ Network Traffic",
+      "visState": "{\"title\":\"RMQ Network Traffic\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"showCircles\":false,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"2\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"recv_oct_details.rate\",\"customLabel\":\"Bytes Received\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"send_oct_details.rate\",\"customLabel\":\"Bytes Sent\"}},{\"id\":\"6\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "RMQ-Management-Metrics",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "RMQ-Minor-GCs",
+    "_type": "visualization",
+    "_source": {
+      "title": "RMQ Minor GCs",
+      "visState": "{\"title\":\"RMQ Minor GCs\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"garbage_collection.minor_gcs\",\"customLabel\":\"Minor GCs\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"radius\",\"params\":{\"field\":\"message_stats.deliver_details.rate\",\"customLabel\":\"Deliver Rate\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "RMQ-Management-Metrics",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  }
+]
