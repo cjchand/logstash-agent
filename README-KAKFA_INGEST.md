@@ -3,7 +3,7 @@
 The `feature/kafka-0.8-ingest` branch features a Logstash client that can ingest from a single Kafka topic from a Kafka 0.8 cluster. This is important because:
 
 1. This requires use of Logstash 2.x, as Logstash 5.x only supports Kafka 0.9+
-2. Similarly, this branch will only work for Kafka 0.8 (Use the `feature/kafka-0.9-ingest` branch if you have Kafka 0.9+)
+2. Similarly, this branch will only work for Kafka 0.8 (Use the [upcoming, but not yet released] `feature/kafka-0.9-ingest` branch if you have Kafka 0.9+)
 
 This repo assumes that you have basic auth enabled for Elasticsearch, either by a web server/proxy or using ES' built-in Shield authentication. If you do not need authentication, then you will need to comment out the `user` and `password` configuration from `./config/logstash/conf.d/logstash-output-es.conf`. 
 
