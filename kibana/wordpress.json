@@ -1,0 +1,136 @@
+ [{
+     "_id": "Wordpress-Overview",
+     "_type": "dashboard",
+     "_source": {
+         "title": "Wordpress Overview",
+         "hits": 0,
+         "description": "",
+         "panelsJSON": "[{\"col\":1,\"id\":\"Wordpress-Logs-Histogram\",\"panelIndex\":21,\"row\":1,\"size_x\":9,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Wordpress-Bytes-Sent\",\"panelIndex\":22,\"row\":3,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"columns\":[\"host\",\"clientip\",\"verb\",\"request\",\"response\"],\"id\":\"Wordpress-Logs\",\"panelIndex\":23,\"row\":7,\"size_x\":12,\"size_y\":19,\"sort\":[\"@timestamp\",\"desc\"],\"type\":\"search\"},{\"col\":1,\"id\":\"Wordpress-Top-Requested-URLs\",\"panelIndex\":24,\"row\":5,\"size_x\":4,\"size_y\":2,\"type\":\"visualization\"},{\"col\":10,\"id\":\"Wordpress-Logs-Count\",\"panelIndex\":25,\"row\":1,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":5,\"id\":\"Wordpress-HTTP-Verbs\",\"panelIndex\":26,\"row\":5,\"size_x\":4,\"size_y\":2,\"type\":\"visualization\"},{\"col\":9,\"id\":\"Wordpress-Top-Client-IPs\",\"panelIndex\":27,\"row\":5,\"size_x\":4,\"size_y\":2,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Wordpress-Response-Codes-Line-Graph\",\"panelIndex\":28,\"row\":3,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"}]",
+         "optionsJSON": "{\"darkTheme\":false}",
+         "uiStateJSON": "{\"P-22\":{\"vis\":{\"legendOpen\":true}}}",
+         "version": 1,
+         "timeRestore": false,
+         "kibanaSavedObjectMeta": {
+             "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+         }
+     }
+ }, {
+     "_id": "Wordpress-Logs",
+     "_type": "search",
+     "_source": {
+         "title": "Wordpress Logs",
+         "description": "",
+         "hits": 0,
+         "columns": [
+             "host",
+             "clientip",
+             "verb",
+             "request",
+             "response"
+         ],
+         "sort": [
+             "@timestamp",
+             "desc"
+         ],
+         "version": 1,
+         "kibanaSavedObjectMeta": {
+             "searchSourceJSON": "{\"index\":\"logstash-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"wordpress-*\"}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+         }
+     }
+ }, {
+     "_id": "Wordpress-Top-Client-IPs",
+     "_type": "visualization",
+     "_source": {
+         "title": "Wordpress - Top Client IPs",
+         "visState": "{\"title\":\"Wordpress - Top Client IPs\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":true},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"clientip.keyword\",\"size\":14,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+         "uiStateJSON": "{}",
+         "description": "",
+         "savedSearchId": "Wordpress-Logs",
+         "version": 1,
+         "kibanaSavedObjectMeta": {
+             "searchSourceJSON": "{\"filter\":[]}"
+         }
+     }
+ }, {
+     "_id": "Wordpress-Top-Requested-URLs",
+     "_type": "visualization",
+     "_source": {
+         "title": "Wordpress - Top Requested URLs",
+         "visState": "{\"title\":\"Wordpress - Top Requested URLs\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":true},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"request.keyword\",\"size\":50,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+         "uiStateJSON": "{}",
+         "description": "",
+         "savedSearchId": "Wordpress-Logs",
+         "version": 1,
+         "kibanaSavedObjectMeta": {
+             "searchSourceJSON": "{\"filter\":[]}"
+         }
+     }
+ }, {
+     "_id": "Wordpress-HTTP-Verbs",
+     "_type": "visualization",
+     "_source": {
+         "title": "Wordpress - HTTP Verbs",
+         "visState": "{\"title\":\"Wordpress - HTTP Verbs\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":true},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"verb.keyword\",\"size\":50,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+         "uiStateJSON": "{}",
+         "description": "",
+         "savedSearchId": "Wordpress-Logs",
+         "version": 1,
+         "kibanaSavedObjectMeta": {
+             "searchSourceJSON": "{\"filter\":[]}"
+         }
+     }
+ }, {
+     "_id": "Wordpress-Logs-Count",
+     "_type": "visualization",
+     "_source": {
+         "title": "Wordpress Logs Count",
+         "visState": "{\"title\":\"Wordpress Logs Count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":\"40\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}}],\"listeners\":{}}",
+         "uiStateJSON": "{}",
+         "description": "",
+         "savedSearchId": "Wordpress-Logs",
+         "version": 1,
+         "kibanaSavedObjectMeta": {
+             "searchSourceJSON": "{\"filter\":[]}"
+         }
+     }
+ }, {
+     "_id": "Wordpress-Response-Codes-Line-Graph",
+     "_type": "visualization",
+     "_source": {
+         "title": "Wordpress Response Codes Line Graph",
+         "visState": "{\"title\":\"Wordpress Response Codes Line Graph\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":true,\"interpolate\":\"linear\",\"scale\":\"linear\",\"dkeywordLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{},\"legendPosition\":\"bottom\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"response\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
+         "uiStateJSON": "{}",
+         "description": "",
+         "version": 1,
+         "kibanaSavedObjectMeta": {
+             "searchSourceJSON": "{\"filter\":[],\"index\":\"logstash-*\",\"query\":{\"query_string\":{\"query\":\"wordpress-*\",\"analyze_wildcard\":true}},\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+         }
+     }
+ }, {
+     "_id": "Wordpress-Bytes-Sent",
+     "_type": "visualization",
+     "_source": {
+         "title": "Wordpress Bytes Sent",
+         "visState": "{\"title\":\"Wordpress Bytes Sent\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"bottom\",\"showCircles\":true,\"smoothLines\":true,\"interpolate\":\"linear\",\"scale\":\"linear\",\"dkeywordLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"bytes\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
+         "uiStateJSON": "{}",
+         "description": "",
+         "version": 1,
+         "kibanaSavedObjectMeta": {
+             "searchSourceJSON": "{\"filter\":[],\"index\":\"logstash-*\",\"query\":{\"query_string\":{\"query\":\"wordpress-*\",\"analyze_wildcard\":true}},\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+         }
+     }
+ }, {
+     "_id": "Wordpress-Logs-Histogram",
+     "_type": "visualization",
+     "_source": {
+         "title": "Wordpress Logs - Histogram",
+         "visState": "{\"title\":\"Wordpress Logs - Histogram\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
+         "uiStateJSON": "{\"vis\":{\"legendOpen\":false}}",
+         "description": "",
+         "savedSearchId": "Wordpress-Logs",
+         "version": 1,
+         "kibanaSavedObjectMeta": {
+             "searchSourceJSON": "{\"filter\":[]}"
+         }
+     }
+ }]
