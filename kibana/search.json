@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "Apache-Logs",
+    "_type": "search",
+    "_source": {
+      "title": "Apache Logs",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "host",
+        "clientip",
+        "verb",
+        "request",
+        "response"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"type:apache\"}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  }
+]
