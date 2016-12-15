@@ -1,0 +1,19 @@
+[
+  {
+    "_id": "Wordpress-Overview-with-MySQL-Metrics",
+    "_type": "dashboard",
+    "_source": {
+      "title": "Wordpress Overview - with MySQL Metrics",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"id\":\"Wordpress-Logs-Histogram\",\"panelIndex\":21,\"row\":1,\"size_x\":9,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Wordpress-Bytes-Sent\",\"panelIndex\":22,\"row\":3,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Wordpress-Top-Requested-URLs\",\"panelIndex\":24,\"row\":9,\"size_x\":4,\"size_y\":2,\"type\":\"visualization\"},{\"col\":10,\"id\":\"Wordpress-Logs-Count\",\"panelIndex\":25,\"row\":1,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":5,\"id\":\"Wordpress-HTTP-Verbs\",\"panelIndex\":26,\"row\":9,\"size_x\":4,\"size_y\":2,\"type\":\"visualization\"},{\"col\":9,\"id\":\"Wordpress-Top-Client-IPs\",\"panelIndex\":27,\"row\":9,\"size_x\":4,\"size_y\":2,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Wordpress-Response-Codes-Line-Graph\",\"panelIndex\":28,\"row\":3,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"MySQL-Threads-By-State\",\"panelIndex\":29,\"row\":5,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":7,\"id\":\"MySQL-Connections\",\"panelIndex\":30,\"row\":5,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":7,\"id\":\"MySQL-Query-Volume-by-Table\",\"panelIndex\":31,\"row\":7,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"MySQL-Query-Volume-by-Verb\",\"panelIndex\":32,\"row\":7,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"columns\":[\"host\",\"clientip\",\"verb\",\"response\",\"request\",\"message\"],\"id\":\"Wordpress-Logs\",\"panelIndex\":33,\"row\":11,\"size_x\":12,\"size_y\":16,\"sort\":[\"@timestamp\",\"desc\"],\"type\":\"search\"}]",
+      "optionsJSON": "{\"darkTheme\":false}",
+      "uiStateJSON": "{\"P-22\":{\"vis\":{\"legendOpen\":false}},\"P-30\":{\"vis\":{\"legendOpen\":false}},\"P-29\":{\"vis\":{\"legendOpen\":false}},\"P-28\":{\"vis\":{\"legendOpen\":false}},\"P-31\":{\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  }
+]
