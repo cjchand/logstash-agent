@@ -1,0 +1,17 @@
+version: '2'
+services:
+  elasticsearch:
+    image: elasticsearch
+    environment:
+      - ES_JAVA_OPTS=-Xms2g -Xmx2g
+    ports:
+     - "9300:9300"
+     - "9200:9200"
+  logstash:
+    image: cjchand/logstash-agent
+    links:
+     - elasticsearch
+    volumes:
+     - ./config/logstash/conf.d/:/etc/logstash/conf.d/
+    ports:
+     - "5514:5514/udp"
