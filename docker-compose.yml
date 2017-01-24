@@ -11,7 +11,7 @@ services:
     image: cjchand/logstash-agent
     links:
      - elasticsearch
-    volumes:
-     - ./config/logstash/conf.d/:/etc/logstash/conf.d/
+#    volumes:
+#     - ./config/logstash/conf.d/:/etc/logstash/conf.d/
     ports:
      - "5514:5514/udp"
