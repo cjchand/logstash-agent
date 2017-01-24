@@ -5,7 +5,12 @@ pipeline:
       - apk add py-pip --no-cache
       - pip install docker-compose
       - docker build -t cjchand/logstash-agent .
-      - docker-compose up & 
+      - docker-compose up &
+      - sleep 15
+      - curl localhost:9200
+      - nc -u localhost 5514 <<< "waffles"
+      - sleep 5
+      - curl 'localhost:9200/_all/_search?q=waffles' | grep waffles
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 #   publish:
