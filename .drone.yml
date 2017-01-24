@@ -6,11 +6,11 @@ pipeline:
       - pip install docker-compose
       - docker build -t cjchand/logstash-agent .
       - docker-compose run elasticsearch
-#      - docker-compose run logstash
+      - docker-compose run logstash
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-  publish:
-    image: cjchand/logstash-agent
-    repo: cjchand/logstash-agent
-    username: ${DOCKER_USERNAME}
-    password: ${DOCKER_PASSWORD}
+#   publish:
+#     image: cjchand/logstash-agent
+#     repo: cjchand/logstash-agent
+#     username: ${DOCKER_USERNAME}
+#     password: ${DOCKER_PASSWORD}
