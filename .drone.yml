@@ -10,7 +10,7 @@ pipeline:
       - docker ps -a
       - sleep 30
       - curl 192.241.247.133:9200
-      - nc -u 192.241.247.133 5514 <<< "waffles"
+      - echo "waffles" | nc -u 192.241.247.133 5514
       - sleep 5
       - curl '192.241.247.133:9200/_all/_search?q=waffles' | grep waffles
     volumes:
