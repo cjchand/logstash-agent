@@ -6,8 +6,23 @@ pipeline:
       - docker build -t cjchand/logstash-agent .
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    links:
+      - elasticsearch
   publish:
     image: cjchand/logstash-agent
     repo: cjchand/logstash-agent
     username: ${DOCKER_USERNAME}
     password: ${DOCKER_PASSWORD}
+
+services:
+ elasticsearch:
+    image: elasticsearch:alpine
+    ports:
+     - "9300:9300"
+     - "9200:9200"
+  kibana:
+    image: kibana:lastest
+    links:
+     - elasticsearch 
+    ports:
+     - "5601:5601"
