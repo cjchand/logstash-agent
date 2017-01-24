@@ -10,6 +10,8 @@ pipeline:
       - elasticsearch
   elasticsearch:
     image: elasticsearch:alpine
+    environment:
+      - ES_JAVA_OPTS=-Xms2g -Xmx2g
     ports:
      - "9300:9300"
      - "9200:9200"
