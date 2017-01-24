@@ -5,7 +5,7 @@ pipeline:
       - apk add py-pip --no-cache
       - pip install docker-compose
       - docker build -t cjchand/logstash-agent .
-      - docker-compose up &
+      - docker-compose up -d
       - sleep 15
       - curl localhost:9200
       - nc -u localhost 5514 <<< "waffles"
