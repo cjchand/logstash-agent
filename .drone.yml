@@ -7,7 +7,7 @@ pipeline:
       - docker build -t cjchand/logstash-agent .
       - docker-compose up -d
       - docker ps -a
-      - sleep 15
+      - sleep 30
       - curl localhost:9200
       - nc -u localhost 5514 <<< "waffles"
       - sleep 5
