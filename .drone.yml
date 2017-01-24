@@ -16,7 +16,7 @@ pipeline:
     ports:
      - "9300:9300"
      - "9200:9200"
-    command:
+    commands:
      - "nohup sh -c elasticsearch &"
   # kibana:
   #   image: kibana:lastest
