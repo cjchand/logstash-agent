@@ -3,7 +3,7 @@ pipeline:
     image: docker
     commands:
       - apk add py-pip --no-cache
-#      - pip install docker-compose
+      - pip install docker-compose
 #      - docker build -t cjchand/logstash-agent .
 #      - docker-compose run elasticsearch
 #      - docker-compose run logstash
