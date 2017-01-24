@@ -1,0 +1,6 @@
+pipeline:
+    publish:
+        image: cjchand/logstash-agent
+        repo: cjchand/logstash-agent
+        username: ${DOCKER_USERNAME}
+        password: ${DOCKER_PASSWORD}
