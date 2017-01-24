@@ -2,6 +2,8 @@ pipeline:
   build:
     image: docker
     commands:
+      - apk add py-pip
+      - pip install docker-compose
       - docker build -t cjchand/logstash-agent .
       - docker-compose run elasticsearch
       - docker-compose run logstash
