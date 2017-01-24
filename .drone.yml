@@ -10,12 +10,14 @@ pipeline:
       - elasticsearch
   elasticsearch:
     image: elasticsearch:alpine
+    detatch: true
     environment:
       - ES_JAVA_OPTS=-Xms2g -Xmx2g
     ports:
      - "9300:9300"
      - "9200:9200"
-    detatch: true
+    command:
+     - "nohup sh -c elasticsearch &"
   # kibana:
   #   image: kibana:lastest
   #   links:
