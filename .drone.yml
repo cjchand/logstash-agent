@@ -5,13 +5,14 @@ pipeline:
       - apk add py-pip --no-cache
       - pip install docker-compose
       - docker build -t cjchand/logstash-agent .
+      - docker-compose down
       - docker-compose up -d
       - docker ps -a
       - sleep 30
-      - curl drone-server:9200
-      - nc -u drone-server 5514 <<< "waffles"
+      - curl 192.241.247.133:9200
+      - nc -u 192.241.247.133 5514 <<< "waffles"
       - sleep 5
-      - curl 'drone-server:9200/_all/_search?q=waffles' | grep waffles
+      - curl '192.241.247.133:9200/_all/_search?q=waffles' | grep waffles
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 #   publish:
