@@ -1,4 +1,8 @@
 pipeline:
+  build:
+    image: docker
+    commands:
+      - docker build -t cjchand/logstash-agent .
     publish:
         image: cjchand/logstash-agent
         repo: cjchand/logstash-agent
