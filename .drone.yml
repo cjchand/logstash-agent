@@ -1,30 +1,12 @@
-# Build bump
 pipeline:
   build:
     image: docker
     commands:
       - docker build -t cjchand/logstash-agent .
+      - docker-compose run elasticsearch
+      - docker-compose run logstash
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-#     links:
-#       - elasticsearch
-#   elasticsearch:
-#     image: elasticsearch:alpine
-#     detatch: true
-#     environment:
-#       - ES_JAVA_OPTS=-Xms2g -Xmx2g
-#     ports:
-#      - "9300:9300"
-#      - "9200:9200"
-#     commands:
-#      - "nohup sh -c elasticsearch &"
-  # kibana:
-  #   image: kibana:lastest
-  #   links:
-  #    - elasticsearch
-  #   ports:
-  #    - "5601:5601"
-  #   detatch: true
   publish:
     image: cjchand/logstash-agent
     repo: cjchand/logstash-agent
