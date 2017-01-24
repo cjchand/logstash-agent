@@ -3,8 +3,8 @@ pipeline:
     image: docker
     commands:
       - docker build -t cjchand/logstash-agent .
-  # publish:
-  #   image: cjchand/logstash-agent
-  #   repo: cjchand/logstash-agent
-  #  username: ${DOCKER_USERNAME}
-  #   password: ${DOCKER_PASSWORD}
+  publish:
+    image: cjchand/logstash-agent
+    repo: cjchand/logstash-agent
+    username: ${DOCKER_USERNAME}
+    password: ${DOCKER_PASSWORD}
