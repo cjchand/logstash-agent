@@ -4,6 +4,7 @@ pipeline:
     commands:
       - apk add py-pip --no-cache
       - pip install docker-compose
+      - apk add netcat-openbsd 
       - docker build -t cjchand/logstash-agent .
       - docker-compose down
       - docker-compose up -d
