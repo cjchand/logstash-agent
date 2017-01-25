@@ -1,3 +1,6 @@
+[![Build Status](http://192.241.247.133/api/badges/cjchand/logstash-agent/status.svg)](http://192.241.247.133/cjchand/logstash-agent)
+
+
 # Overview
 
 **Note:** There's a [Quick Start Guide here](./docs/quick-start-guide.md) for the impatient.
