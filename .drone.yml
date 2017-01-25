@@ -9,8 +9,8 @@ pipeline:
       - docker build -t cjchand/logstash-agent .
       - docker-compose down
       - docker-compose up -d
+      - sleep 600
       - docker ps -a
-      - sleep 30
       - curl 192.241.247.133:9200
       - echo "waffles" | socat - udp-sendto:192.241.247.133:5514
       - sleep 5
