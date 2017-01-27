@@ -15,6 +15,7 @@ pipeline:
       - echo "waffles" | socat - udp-sendto:192.241.247.133:5514
       - sleep 5
       - curl '192.241.247.133:9200/_all/_search?q=waffles' | grep waffles
+      - docker-compose down
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   publish:
