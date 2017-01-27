@@ -19,8 +19,8 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   publish:
-    docker:
-      repo: cjchand/logstash-agent
-      username: ${DOCKER_USERNAME}
-      password: ${DOCKER_PASSWORD}
-      tag: latest
+    image: plugins/docker
+    repo: cjchand/logstash-agent
+    username: ${DOCKER_USERNAME}
+    password: ${DOCKER_PASSWORD}
+    tag: latest
